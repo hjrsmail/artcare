@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Activity extends Model
 {
-    //
+    protected $fillable = [
+        'name',
+        'description',
+        'image',
+        'link',
+        'text_button',
+    ];
 }
