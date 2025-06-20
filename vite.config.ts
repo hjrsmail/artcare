@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import laravel from 'laravel-vite-plugin';
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
+import compression from 'vite-plugin-compression'; 
 
 export default defineConfig({
     plugins: [
@@ -13,6 +14,7 @@ export default defineConfig({
         }),
         react(),
         tailwindcss(),
+        compression({ algorithm: 'gzip' }), 
     ],
     esbuild: {
         jsx: 'automatic',
