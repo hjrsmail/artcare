@@ -3,7 +3,8 @@ import react from '@vitejs/plugin-react';
 import laravel from 'laravel-vite-plugin';
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
-import compression from 'vite-plugin-compression'; 
+import path from 'path';
+import compression from 'vite-plugin-compression';
 
 export default defineConfig({
     plugins: [
@@ -14,7 +15,7 @@ export default defineConfig({
         }),
         react(),
         tailwindcss(),
-        compression({ algorithm: 'gzip' }), 
+        compression({ algorithm: 'gzip' }),
     ],
     esbuild: {
         jsx: 'automatic',
@@ -22,6 +23,8 @@ export default defineConfig({
     resolve: {
         alias: {
             'ziggy-js': resolve(__dirname, 'vendor/tightenco/ziggy'),
+            '@': path.resolve(__dirname, 'resources/js'),
+            '~': path.resolve(__dirname , 'public/assets'), 
         },
     },
 });
