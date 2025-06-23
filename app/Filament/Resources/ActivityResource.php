@@ -73,14 +73,14 @@ class ActivityResource extends Resource
                     ->disk('public'),
                 TextColumn::make('link')
                     ->label('Link'),
-                TextColumn::make('text_button')
-                    ->label('Teks Tombol'),
+                
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

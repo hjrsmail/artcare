@@ -18,6 +18,9 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Http\UploadedFile;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class MaterialResource extends Resource
 {
@@ -31,7 +34,7 @@ class MaterialResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-book-open';
 
-    public static function form(Form $form): Form
+     public static function form(Form $form): Form
     {
         return $form
             ->schema([
@@ -44,13 +47,29 @@ class MaterialResource extends Resource
                             ->required()
                             ->label('Deskripsi'),
                         FileUpload::make('img')
-                            ->image()
-                            ->directory('uploads/thumbnail')
-                            ->required()
                             ->label('Gambar')
-                    ])
+                            ->image()
+                            ->required()
+                            // Tentukan direktori tempat Filament akan menyimpan file
+                            ->directory('uploads/thumbnail') 
+                            // Gunakan visibility 'public' agar bisa diakses dari web
+                            ->visibility('public')
+                            // Ubah nama file sebelum disimpan
+                            ->getUploadedFileNameForStorageUsing(
+                                fn (UploadedFile $file): string => (string) str()->uuid() . '.' . $file->getClientOriginalExtension()
+                            )
+                            // Anda bisa menambahkan image editor untuk resize bawaan Filament
+                            ->imageEditor()
+                            ->imageEditorAspectRatios([
+                                '16:9',
+                                '4:3',
+                                '1:1',
+                            ])
+                            ->maxSize(1028),
+                    ]),
             ]);
     }
+
 
     public static function table(Table $table): Table
     {
@@ -69,6 +88,7 @@ class MaterialResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

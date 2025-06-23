@@ -40,9 +40,9 @@ class CounselorResource extends Resource
                     ->required()
                     ->label('Nama Lengkap'),
                 FileUpload::make('img')
-                    ->required()
                     ->label('Foto')
                     ->image()
+                    ->disk('public')
                     ->directory('uploads/counselors'),
                 TextInput::make('no_whatsapp')
                     ->required()
@@ -61,15 +61,16 @@ class CounselorResource extends Resource
                 TextColumn::make('no_whatsapp')
                     ->label('Nomor Telepon')
                     ->searchable(),
-                ImageColumn::make('img')
-                    ->label('Foto')
-                    ->disk('public'),
+                // ImageColumn::make('img')
+                //     ->label('Foto')
+                //     ->disk('public'),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

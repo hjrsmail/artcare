@@ -13,6 +13,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -37,14 +38,14 @@ class InformationResource extends Resource
                 Grid::make(1)
                 ->schema([
                     TextInput::make('title')
-                        ->label('Judul')
+                        ->label('Nama Gambar')
                         ->required(),
                     Textarea::make('description')
-                        ->label('Deskripsi')
-                        ->required(),
+                        ->label('Deskripsi'),
                     FileUpload::make('image')
                         ->label('Gambar')
                         ->directory('uploads/thumbnail')
+                        ->required()
                         ->image(),
                 ])
             ]);
@@ -54,19 +55,16 @@ class InformationResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title')
-                    ->label('Judul')
-                    ->searchable(),
-                TextColumn::make('description')
-                    ->label('Deskripsi')
-                    ->searchable(),
-                TextColumn::make('created_at')
+                ImageColumn::make('image')
+                    ->label('Gambar'),
+                TextColumn::make('created_at'),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
                 Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([

@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\GuideResource\Pages;
-use App\Filament\Resources\GuideResource\RelationManagers;
 use App\Models\Guide;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
@@ -16,12 +15,13 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Storage;
 
 class GuideResource extends Resource
 {
     protected static ?string $model = Guide::class;
 
-        protected static ?string $navigationGroup = 'Kelola Halaman';
+    protected static ?string $navigationGroup = 'Kelola Halaman';
 
     protected static ?string $pluralLabel = 'Panduan';
 
@@ -39,7 +39,9 @@ class GuideResource extends Resource
                 TextInput::make('description')
                     ->label('Deskripsi'),
                 FileUpload::make('file_path')
-                    ->label('File Panduan'),
+                    ->label('File Panduan')
+                    ->preserveFilenames()
+                    ->directory('uploads/pdf'),
             ]);
     }
 
@@ -50,13 +52,22 @@ class GuideResource extends Resource
                 TextColumn::make('title')
                     ->label('Judul'),
                 TextColumn::make('file_path')
-                    ->label('Deskripsi')
+                    ->label('File Panduan')
+                    ->formatStateUsing(fn ($state) => '📄 Lihat PDF')
+                    ->url(fn ($state) => Storage::url($state))
+                    ->openUrlInNewTab()
+
+
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ViewAction::make(),
+
+                
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
