@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cf85e5ade804b2618ad6831174da84ba",
+    "content-hash": "63b93439f01fcef3f57476d882606b66",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -3527,16 +3527,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "3.10.0",
+            "version": "3.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPHP/carbon.git",
-                "reference": "c1397390dd0a7e0f11660f0ae20f753d88c1f3d9"
+                "reference": "1fd1935b2d90aef2f093c5e35f7ae1257c448d00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/c1397390dd0a7e0f11660f0ae20f753d88c1f3d9",
-                "reference": "c1397390dd0a7e0f11660f0ae20f753d88c1f3d9",
+                "url": "https://api.github.com/repos/CarbonPHP/carbon/zipball/1fd1935b2d90aef2f093c5e35f7ae1257c448d00",
+                "reference": "1fd1935b2d90aef2f093c5e35f7ae1257c448d00",
                 "shasum": ""
             },
             "require": {
@@ -3628,7 +3628,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-06-12T10:24:28+00:00"
+            "time": "2025-06-21T15:19:35+00:00"
         },
         {
             "name": "nette/schema",
@@ -8132,72 +8132,6 @@
                 "source": "https://github.com/Jean85/pretty-package-versions/tree/2.1.1"
             },
             "time": "2025-03-19T14:43:43+00:00"
-        },
-        {
-            "name": "kevincobain2000/laravel-erd",
-            "version": "1.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kevincobain2000/laravel-erd.git",
-                "reference": "e8b1b2c146c7b8f485afb28fdb750022294ef80e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kevincobain2000/laravel-erd/zipball/e8b1b2c146c7b8f485afb28fdb750022294ef80e",
-                "reference": "e8b1b2c146c7b8f485afb28fdb750022294ef80e",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.4|^8.0|^8.1|^8.2|^8.3",
-                "spatie/laravel-package-tools": "^1.4.3"
-            },
-            "require-dev": {
-                "brianium/paratest": "^6.2",
-                "nunomaduro/collision": "^5.3",
-                "orchestra/testbench": "^6.15",
-                "phpunit/phpunit": "^9.3",
-                "spatie/laravel-ray": "^1.23",
-                "vimeo/psalm": "^4.8"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "aliases": {
-                        "LaravelERD": "Kevincobain2000\\LaravelERD\\LaravelERDFacade"
-                    },
-                    "providers": [
-                        "Kevincobain2000\\LaravelERD\\LaravelERDServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Kevincobain2000\\LaravelERD\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Pulkit Kathuria",
-                    "email": "kevincobain2000@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A tool to automatically generate interactive ERD relationships in Models for Laravel",
-            "homepage": "https://github.com/kevincobain2000/laravel-erd",
-            "keywords": [
-                "kevincobain2000",
-                "laravel erd generator",
-                "laravel-erd"
-            ],
-            "support": {
-                "issues": "https://github.com/kevincobain2000/laravel-erd/issues",
-                "source": "https://github.com/kevincobain2000/laravel-erd/tree/1.7"
-            },
-            "time": "2024-02-26T00:17:05+00:00"
         },
         {
             "name": "laravel/pail",
