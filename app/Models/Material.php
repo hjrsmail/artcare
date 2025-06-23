@@ -3,8 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Material extends Model
 {
-    protected $fillable = ['title', 'description', 'emoji' , 'img'];
+    use SoftDeletes;
+
+    protected $guarded = ['id'];
 }

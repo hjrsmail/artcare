@@ -3,8 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Guide extends Model
 {
-    protected $fillable = ['title', 'file_path'];
+    use SoftDeletes;
+
+    protected $guarded = ['id'];
 }
