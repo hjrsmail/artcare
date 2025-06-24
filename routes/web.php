@@ -23,7 +23,7 @@ Route::get('/materi', [MaterialController::class, 'show']);
 Route::get('/assesment-awal', function () {
     return Inertia::render('assesment/assesment-awal');
 });
-Route::get('/assesment-akhir', function () {
+Route::get('/evaluasi-konseling', function () {
     return Inertia::render('assesment/assesment-akhir');
 });
 
