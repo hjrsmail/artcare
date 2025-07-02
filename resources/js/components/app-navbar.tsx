@@ -130,7 +130,7 @@ export default function AppNavbar() {
                         <div className="flex flex-col items-start px-4 py-2 border-t border-primary-300">
                             <NavLinkMobile to="/">Home</NavLinkMobile>
                             <details className="w-full group">
-                                <summary className="cursor-pointer text-white py-2 px-3 flex justify-between items-center">
+                                <summary className="cursor-pointer text-white py-2 px-3 flex justify-between items-center font-medium text-md">
                                     Assesment
                                     <span className="transform transition-transform group-open:rotate-180">▼</span>
                                 </summary>
