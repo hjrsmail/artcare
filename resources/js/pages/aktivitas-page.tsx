@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import AppLayout from '@/layouts/app-layout';
-import { Head, usePage } from '@inertiajs/react';
-import { useEffect, useState } from 'react';
+import { Head, Link, usePage } from '@inertiajs/react';
+import { useEffect, useRef, useState } from 'react';
 import pita from '~/images/pita1.webp';
 
 
@@ -15,43 +15,44 @@ interface Activity {
 
 export default function ActivityPage() {
 
-     const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
 
     const page = usePage();
     const activities = page.props.activities as Activity[];
+    const sectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-            const images = Array.from(document.images); // semua tag <img> di halaman
-            if (images.length === 0) {
-                setIsLoading(false); // tidak ada gambar? langsung selesai
-                return;
+        const images = Array.from(document.images); // semua tag <img> di halaman
+        if (images.length === 0) {
+            setIsLoading(false); // tidak ada gambar? langsung selesai
+            return;
+        }
+
+        let loadedCount = 0;
+
+        const handleImageLoad = () => {
+            loadedCount += 1;
+            if (loadedCount === images.length) {
+                setIsLoading(false);
             }
-    
-            let loadedCount = 0;
-    
-            const handleImageLoad = () => {
-                loadedCount += 1;
-                if (loadedCount === images.length) {
-                    setIsLoading(false);
-                }
-            };
-    
+        };
+
+        images.forEach((img) => {
+            if (img.complete) {
+                handleImageLoad();
+            } else {
+                img.addEventListener("load", handleImageLoad);
+                img.addEventListener("error", handleImageLoad); // tetap lanjut kalau error
+            }
+        });
+
+        return () => {
             images.forEach((img) => {
-                if (img.complete) {
-                    handleImageLoad();
-                } else {
-                    img.addEventListener("load", handleImageLoad);
-                    img.addEventListener("error", handleImageLoad); // tetap lanjut kalau error
-                }
+                img.removeEventListener("load", handleImageLoad);
+                img.removeEventListener("error", handleImageLoad);
             });
-    
-            return () => {
-                images.forEach((img) => {
-                    img.removeEventListener("load", handleImageLoad);
-                    img.removeEventListener("error", handleImageLoad);
-                });
-            };
-        }, []);
+        };
+    }, []);
 
     // Debugg
     // console.log(activities);
@@ -79,34 +80,51 @@ export default function ActivityPage() {
         <>
             <Head title="Aktivitas">
                 <meta name="description" content="Aktivitas Art Care" />
-                <link rel="preload" as="image" href="/assets/images/banner.webp" />
-                
             </Head>
             <AppLayout>
                 <div className="relative grid w-full grid-cols-1 items-start text-center">
                     {/* Kolom Teks dan Tombol */}
-                    <div className="bg-[url(/assets/images/bg-aktivitas.webp)] relative mx-auto flex h-[100vh] w-full flex-col justify-center bg-gray-900/60 bg-cover bg-center pt-8 bg-blend-multiply">
+                    <div className="bg-[url(/assets/images/bg-aktivitas.webp)] relative mx-auto flex min-h-screen w-full flex-col justify-center bg-gray-900/60 bg-cover bg-center pt-8 bg-blend-multiply">
                         <div className="space-y-6">
-                            <div className="h-[10vh]">
-                                <img src={pita} alt="" className="absolute top-25 left-3 md:w-40 w-30" />
+                            {/* Logo pita */}
+                            <div className="relative h-[10vh]">
+                                <img src={pita} alt="" className="absolute top-5 left-3 w-24 md:w-40" />
                             </div>
-                            <div className="max-w-screen-xl mx-auto px-5">
-                                <h1 className="text-shadow-md mb-4 text-3xl font-bold text-secondary-500 md:text-5xl">KAWAN EKSPRESI</h1>
-                                <h2 className="text-lg leading-relaxed text-putih md:text-xl">
+
+                            <div className="max-w-screen-xl mx-auto px-5 text-center">
+                                <h1 className="text-shadow-md mb-4 text-2xl font-bold text-secondary-500 md:text-5xl">
+                                    KAWAN EKSPRESI
+                                </h1>
+
+                                <h2 className="text-base leading-relaxed text-putih md:text-xl lg:pt-5">
                                     "Saat kata sulit diucap, ekspresi bisa menjadi jembatan." Di fitur Kawan Ekspresi, kamu bisa menuangkan perasaan
                                     lewat gambar, warna, simbol, atau tulisan kreatif. Ini adalah ruang bebas nilai—tidak ada yang benar atau salah
                                     dalam berekspresi. Kamu juga bisa berbagi hasil karyamu (dengan izinmu) atau menyimpannya sebagai jurnal pribadi.
                                     Di sinilah seni menjadi sahabat yang mendengarkan.
                                 </h2>
+
+                                <h2 className="text-base leading-relaxed text-putih md:text-xl pt-4 lg:pt-8">
+                                    Dibawah ini, ada 4 aktivitas seru yang perlu kamu lakukan bertahap mulai dari Warm Up, Recalling Event, Emotional experience, hingga restitutions. Pada tiap bagiannya telah disertai video tutorial langkah-langkah yang akan menuntun kamuu!
+                                </h2>
+
+                                <div className="bg-secondary-400 w-fit mx-auto rounded-xl mt-4 lg:mt-6">
+                                    <Button
+                                        onClick={() => sectionRef.current?.scrollIntoView({ behavior: "smooth" })}
+                                        className="px-5 py-3 lg:py-8 text-base md:text-2xl font-semibold text-putih shadow-md"
+                                    >
+                                        Yuk Mulai!!
+                                    </Button>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                     <section>
                         <div className="flex min-h-10 items-center justify-center rounded-xl bg-[#D9D9D9]">
                             <h1 className="text-lg text-primary-600">artcare@gmail.com</h1>
                         </div>
                     </section>
-                    <section className="w-full bg-gray-200/80 bg-[url('/assets/images/pita1.webp')] bg-fixed bg-no-repeat pt-6 bg-blend-lighten">
+                    <section ref={sectionRef} className="w-full bg-gray-200/80 bg-[url('/assets/images/pita1.webp')] bg-fixed bg-no-repeat pt-6 bg-blend-lighten">
                         <div className="container mx-auto grid w-[80%] grid-cols-1 md:grid-cols-2">
                             {activities.map((item, index) => (
                                 <div key={index} className="container mx-auto mb-3 flex flex-col items-center gap-y-6">
@@ -127,7 +145,7 @@ export default function ActivityPage() {
                                 </div>
                             ))}
                         </div>
-                        
+
                         <div className="container mx-auto my-6 flex w-[90%] flex-col items-center justify-between gap-y-2 rounded-xl bg-primary-600 px-4 py-4 shadow-md md:flex-row md:gap-y-0">
                             <h3 className="text-start text-lg font-bold text-white">Wahh.... kalau sudah selesai mengerjakan yuk kita lanjut!</h3>
                             <Button
