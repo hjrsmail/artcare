@@ -48,12 +48,15 @@ export default function CardInformation({ informations = [] }: CardInformationPr
         <div
             className="relative px-4 mt-10 pt-10 sm:px-6 sm:py-12 lg:py-8 lg:px-2 lg:min-h-[750px]">
             <div className="flex flex-col justify-center items-center text-center py-6 md:pt-20">
-                <p className="text-2xl sm:text-4xl md:text-6xl font-bold text-primary-600" data-aos="fade-down">
-                    Tahukah kamu??
+                <p className="text-3xl sm:text-4xl md:text-6xl font-bold text-primary-600" data-aos="fade-down">
+                    Pernahkah kamu??
+                </p>
+                <p className="text-xl sm:text-2xl md:text-4xl font-semibold text-primary-600 pt-3 md:mt-7 ">
+                    Merasa sulit mengekspresikan serta menyampaikan pikiran dan peraaanmu? 
                 </p>
 
-                <p className="text-base md:text-2xl text-primary-600 pt-5 md:pt-10">
-                    ngelakuin hal kayak nyakitin diri sendiri seperti nyilet tangan, nyakar, ngegebuk kepala <br /> sendiri, atau sengaja bikin luka di badan? Nah itu  namanya self injury guys. ini bukan <br /> drama, ini realita. Banyak yang  ngalemin tapi diem-diem aja.
+                <p className="text-base/6 md:text-2xl text-primary-600 pt-5 md:pt-8">
+                    Hal seperti itu tidak boleh dianggap remeh Teman-teman, sebab  hal tersebut bisa berdampak buruk <br className="hidden lg:block" /> pada kemampuan kamu untuk mengelola emosi. Orang-orang yang mengalami kesulitan dalam pengelolaan emosi <br className="hidden lg:block" /> bisa menyalurkan emosinya dengan cara yang salah seperti mengiris lengan, memukul kepala,  dan perilaku menyakiti diri lainnya <br className="hidden lg:block" /> yang dapat berujung menjadi perilaku Self-Injury.
                 </p>
             </div>
 
