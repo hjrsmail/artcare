@@ -151,20 +151,20 @@ export default function Welcome() {
                             <section className="relative px-4 py-10 sm:px-6 sm:py-12 md:py-1 lg:py-8 lg:px-2 lg:min-h-[620px]" data-aos="fade-up">
                                 <div className="flex flex-col justify-center items-center text-center md:py-6 md:pt-20">
                                     <p className="text-2xl sm:text-4xl md:text-5xl text-primary-600 font-bold" >
-                                        Tujuan dan Komitmen AKUSI
+                                        Mengekspresikan Diri Bersama Art-Care
                                     </p>
                                 </div>
                                 <div className="w-full px-5 py-6 mx-auto lg:px-10 space-y-5 sm:py-8 md:py-8 max-w-7xl text-primary-700">
                                     <h1 className='text-base text-justify md:text-xl md:text-center'>
-                                        AKUSI ini tuh website keren yang bantu kalian buat ngecek seberapa  besar kecenderungan self-injury, ngeluarin unek-unek atau emosi kalian,  dan ngurangin pikiran negatif yang gak rasional, semua bisa dilakuin  dengan cara yang asik, fleksibel, dan gak ribet. Menurut Depdiknas  (Fathurrahman, 2023), teknologi itu penting banget kalau digabung sama  konselor yang profesional biar layanan konseling makin oke.
+                                        Art-Care ini akan menemani kamu untuk bisa mengekspresikan pikiran dan perasaan mu dengan cara yang lebih benar dan positif agar terhindar dari perilaku self-injury. Disini kita akan melakukannya dengan cara yang asik dan fleksibel, Art-Care memanfaatkan teknologi website yang akan memudahkanmu mengaksesnya melalui smartphone maupun perangkat teknologi lainnya!
                                         <br />
                                         <br />
-                                        Nah, website konseling online ini dibuat, buat bantu Peserta didik di SMP Kota Makassar ngadepin dan ngecegah kasus self-injury yang mungkin  aja dialamin. Waktu ngembangin website ini, tim pengembang tetap  ngikutin aturan main dan kode etik konselor, kayak keterbukaan sama  rahasia pribadi kalian tetap dijaga banget. Jadi, tenang aja, semua yang kalian curhatin aman dan prosesnya juga sesuai aturan. Pokoknya, AKUSI  ini hadir buat support kalian sepenuhnya, tanpa drama.
+                                        Dalam perancangan Art-Care ini, kami tetap mengikuti aturan kode etik konselor yang akan menjamin kerahasiaan dari data dan aktivitas kamu disini. Jadi, kamu bisa bebas berekspresi tanpa takutt lagi!!
                                     </h1>
                                 </div>
                             </section>
 
-                            <section className="relative px-4 py-10 sm:px-6 sm:py-12 lg:py-16 lg:px-8" data-aos="fade-up">
+                            <section className="relative px-4 py-10 sm:px-6 sm:py-12 lg:py-12 lg:px-8" data-aos="fade-up">
                                 <div className="lg:max-w-7xl px-4 md:px-3 lg:px-7 mx-auto grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 items-center">
                                     {/* Kolom Teks */}
                                     <div className="text-md sm:text-2xl lg:text-3xl text-primary-600 leading-relaxed font-semibold 2xl:col-span-2">
