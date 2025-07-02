@@ -13,8 +13,8 @@ export default function AssesmenAkhirPage() {
 
     return (
         <>
-            <Head title="Assesment Akhir">
-                <meta name="description" content="Assesment Akhir" />
+            <Head title="Evaluasi Konseling">
+                <meta name="description" content="Evaluasi Konseling" />
             </Head>
             <AppAssesmentLayout>
                 <div className="md:mb-20 lg:mb-50 2xl:mb-30 relative grid w-full min-h-screen content-center grid-cols-1 items-start gap-8 px-6 text-center md:container">
